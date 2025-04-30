@@ -85,6 +85,18 @@ void setup() {
   memcpy(previous_board, board, sizeof(board));
 }
 
+// === Simula leitura da matriz de sensores ===
+void scan_board(char b[8][8]) {
+  // Aqui você vai ler os sensores reais. Por enquanto simula.
+  // Exemplo: simular e2e4
+  static bool moved = false;
+  if (!moved) {
+    b[6][4] = '.';  // e2 vazio
+    b[4][4] = 'P';  // e4 cheio
+    moved = true;
+  }
+}
+
 // === Loop principal ===
 void loop() {
   scan_board(board);
@@ -133,16 +145,4 @@ void init_board() {
   for (int i = 0; i < 8; i++)
     for (int j = 0; j < 8; j++)
       board[i][j] = start[i][j];
-}
-
-// === Simula leitura da matriz de sensores ===
-void scan_board(char b[8][8]) {
-  // Aqui você vai ler os sensores reais. Por enquanto simula.
-  // Exemplo: simular e2e4
-  static bool moved = false;
-  if (!moved) {
-    b[6][4] = '.';  // e2 vazio
-    b[4][4] = 'P';  // e4 cheio
-    moved = true;
-  }
 }
